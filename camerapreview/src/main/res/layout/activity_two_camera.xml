@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TwoCamera">
+
+    <RelativeLayout
+        android:id="@+id/cameraPreview_Layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.tmac.view.CameraPreview
+            android:id="@+id/cameraPreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/openAE_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Open AE/AF"/>
+
+        <Button
+            android:id="@+id/takePhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/openAE_0"
+            android:textSize="20sp"
+            android:text="Take Photo"/>
+
+        <Button
+            android:id="@+id/closeAE_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/openAE_0"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:text="Close AE/AF"/>
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/cameraPreview_Layout"
+        android:layout_height="wrap_content">
+
+        <com.tmac.view.CameraPreview
+            android:id="@+id/cameraPreview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/openAE_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Open AE"/>
+
+        <Button
+            android:id="@+id/closeAE_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/openAE_1"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:text="Close AE"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

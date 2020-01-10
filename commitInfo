@@ -1,0 +1,34 @@
+调整图片宽高
+要求:
+1.	目前是抓的全尺寸4000x3000的，实际标定结果给应用使用为720P，希望抓图取720P的图像，目前的图像太大算法无法处理，手动压缩以后才能用
+2.	应用抓取时间很长，一幅需要8-15s，希望能降低，上面一条修改后应该可以降低时间
+3.	会出现应用无效的情况，有一次出现抓图失败后再也抓不了，硬重启以后才正常，这条看能否改善
+
+之前代码：
+CameraPreview这个类
+
+ mImageReader = ImageReader.newInstance(largest.getWidth(), largest.getHeight(),
+                        ImageFormat.JPEG, /*maxImages*/2);
+
+修改后：
+    把图片的宽高改为常量，再改图片尺寸直接改这两行
+    private static final int SAVE_PIC_WIDTH = 720;//保存图片的宽
+    private static final int SAVE_PIC_HEIGHT = 480;//保存图片的高
+
+ mImageReader = ImageReader.newInstance(SAVE_PIC_WIDTH, SAVE_PIC_HEIGHT,
+                        ImageFormat.JPEG, /*maxImages*/1);
+
+-----------------------------------------2018-12-26--------------------------------------------------------------
+调整CameraCpature适配到G2
+1.解决CameraCpature Fisheye抓图失败，修改mCaptureCallback：
++CaptureResult.CONTROL_AF_STATE_INACTIVE == afState ||
+2.FishEye 抓到的图宽度裁剪一半，只保留单个Fisheye的图像
++修改onImageAvailable
++postDelayCrop()
++cropBitmap()
++saveBitmapFile
+
+-----------------------------------------2019-01-02--------------------------------------------------------------
+修改文件:camerapreview/src/main/AndroidManifest.xml
+修改需求:更新G2 Camera抓图的签名APK,解决用户需要手动给Camera授权的问题.
+
